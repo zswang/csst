@@ -25,16 +25,27 @@ CSST (CSS Text Transformation)
 
 ### 服务器应答的内容
 
-```
+```js
 function csst(id, text) {
   return `
-	@keyframes ${id} {}
-	@-webkit-keyframes ${id} {}
-	#${id} {
-		content: ${JSON.stringify(text)};
-		animation: ${id} 1ms;
-		-webkit-animation: ${id} 1ms;
-	}`;
+  @keyframes ${id} {
+    from {
+    }
+    to {
+      color: red;
+    }
+  }
+  @-webkit-keyframes ${id} {
+    from {}
+    to {
+      color: red;
+    }
+  }
+  #${id} {
+    content: ${JSON.stringify(text)};
+    animation: ${id} 2s;
+    -webkit-animation: ${id} 2s;
+  }`;
 }
 ```
 
