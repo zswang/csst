@@ -34,8 +34,7 @@ http.createServer(function(req, res) {
 
   switch (location.pathname) {
     case '/timestamp.css':
-      console.log(location);
-
+      // console.log(location);
       res.writeHead(200, {
         'Content-Type': 'text/css'
       });
