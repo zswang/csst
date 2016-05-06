@@ -9,12 +9,23 @@
  */
 function csst(id, text) {
   return `
-	@keyframes ${id} {}
-	@-webkit-keyframes ${id} {}
+	@keyframes ${id} {
+    from {
+    }
+    to {
+      color: red;
+    }
+  }
+	@-webkit-keyframes ${id} {
+    from {}
+    to {
+      color: red;
+    }
+  }
 	#${id} {
 		content: ${JSON.stringify(text)};
-		animation: ${id} 1ms;
-		-webkit-animation: ${id} 1ms;
+		animation: ${id} 2s;
+		-webkit-animation: ${id} 2s;
 	}`;
 }
 

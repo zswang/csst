@@ -65,9 +65,9 @@
 				link.parentNode.removeChild(link);
 				link = null;
 			}
-			if (area && area.parentNode) {
-				area.parentNode.removeChild(area);
-				area = null;
+			if (span && span.parentNode) {
+				span.parentNode.removeChild(span);
+				span = null;
 			}
 			if (timer) {
 				clearTimeout(timer);
@@ -78,9 +78,9 @@
 
 		function handler() {
 			if (fn) {
-				var content = getComputedStyle(area, false).content;
-				// 移除两边双引号
-				content = content.replace(/^"([^]*)"$/, "$1");
+				var content = getComputedStyle(span, false).content;
+				// 移除两边引号
+				content = content.replace(/^("|')([^]*)\1$/, "$2");
 				fn(null, content);
 			}
 			cleanup();
@@ -88,15 +88,15 @@
 
 		var head = document.querySelector('head');
 		var link = document.createElement('link');
-		var area = document.createElement('area');
-		area.style.visibility = 'hidden';
-		area.style.position = 'absolute';
-		area.style.top = '-100px';
-		area.id = id;
-		document.documentElement.appendChild(area);
+		var span = document.createElement('span');
+		span.style.visibility = 'hidden';
+		span.style.position = 'absolute';
+		span.style.top = '-100px';
+		span.id = id;
+		document.documentElement.appendChild(span);
 
-		area.addEventListener('animationstart', handler, false);
-		area.addEventListener('webkitAnimationStart', handler, false);
+		span.addEventListener('animationstart', handler, false);
+		span.addEventListener('webkitAnimationStart', handler, false);
 
 		url += (url.indexOf('?') >= 0 ? '&' : '?') + param + '=' + encodeURIComponent(id);
 		url = url.replace('?&', '?');
