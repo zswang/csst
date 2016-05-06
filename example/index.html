@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>CSS Text Transformation Example</title>
+  <script src="http://apps.bdimg.com/libs/vue/1.0.14/vue.js"></script>
+  <script src="../csst.js"></script>
+</head>
+<body>
+  <button>CSST</button>
+  <ul>
+    <li v-for="item in items">
+      #{{ item.id }} : {{ item.timestamp }}
+    </li>
+  </ul>
+</body>
+<script>
+(function() {
+  var count = 0;
+  var items = [{
+    id: count++,
+    timestamp: 'null'
+  }];
+  new Vue({
+    el: 'ul',
+    data: {
+      items: items
+    }
+  });
+  document.querySelector('button').addEventListener('click', function() {
+    csst('http://localhost:2016/timestamp.css', function(err, text) {
+      if (items.length > 10) {
+        items.shift();
+      }
+      items.push({
+        id: count++,
+        timestamp: text
+      });
+    });
+  });
+})();
+</script>
+</html>

@@ -1,0 +1,43 @@
+{
+  "name": "csst",
+  "version": "0.0.1",
+  "description": "CSS Text Transformation",
+  "main": "csst.js",
+  "bin": {
+    "csst": "cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zswang/csst.git"
+  },
+  "keywords": [
+    "CSS",
+    "Transformation",
+    "CSST"
+  ],
+  "author": {
+    "name": "zswang",
+    "url": "http://weibo.com/zswang"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zswang/csst/issues"
+  },
+  "homepage": "https://github.com/zswang/csst",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-open": "^2.0.0",
+    "gulp-jdists": "^0.0.5",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.5.3"
+  },
+  "dependencies": {
+  },
+  "scripts": {
+    "dist": "gulp"
+  },
+  "files": [
+    "csst.js",
+    "README.md"
+  ]
+}
