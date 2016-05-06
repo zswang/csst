@@ -13,7 +13,7 @@ CSST (CSS Text Transformation)
 
 ### 调用流程
 
-![image](https://cloud.githubusercontent.com/assets/536587/15068574/e4b87de4-13aa-11e6-8d0c-3b89d7ec2d58.png)
+![image](https://cloud.githubusercontent.com/assets/536587/15070367/63126c30-13b6-11e6-93aa-75bf5995c019.png)
 
 ### 技术手段
 
