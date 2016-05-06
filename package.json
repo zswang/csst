@@ -1,6 +1,6 @@
 {
   "name": "csst",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "CSS Text Transformation",
   "main": "csst.js",
   "bin": {
@@ -31,10 +31,10 @@
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^1.5.3"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "scripts": {
-    "dist": "gulp"
+    "_update_version": "node version.js",
+    "dist": "npm run _update_version && gulp"
   },
   "files": [
     "csst.js",
