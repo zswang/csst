@@ -49,6 +49,10 @@ function csst(id, text) {
 }
 ```
 
+## 与 JSONP 安全性比较
+
+![image](https://cloud.githubusercontent.com/assets/536587/15090764/fcfee300-1465-11e6-9209-20d5ddd9b332.png)
+
 ## 问题
 
 * 没有 JSONP 适配广，CSST 依赖支持 CSS3 的浏览器。
