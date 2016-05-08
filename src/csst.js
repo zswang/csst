@@ -78,9 +78,21 @@
 
     function handler() {
       if (fn) {
-        var content = getComputedStyle(span, false).content;
+        var computedStyle = getComputedStyle(span, false);
+        var content = computedStyle.content;
+
+        /*<remove trigger="release">*/
+        console.log('content: %s', content);
+        /*</remove>*/
+
         // 移除两边引号
-        content = content.replace(/^("|')([^]*)\1$/, "$2");
+        content = content.replace(/^("|')([^]*)\1$/, '$2');
+        try {
+          content = JSON.parse('"' + content + '"');
+        } catch(ex) {
+          fn(ex);
+          return;
+        }
         fn(null, content);
       }
       cleanup();

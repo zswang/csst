@@ -8,10 +8,12 @@
  * @return {string} 返回样式内容
  */
 function csst(id, text) {
+  if (typeof text !== 'string') {
+    text = JSON.stringify(text);
+  }
   return `
   @keyframes ${id} {
-    from {
-    }
+    from {}
     to {
       color: red;
     }
@@ -49,7 +51,7 @@ http.createServer(function(req, res) {
       res.writeHead(200, {
         'Content-Type': 'text/css'
       });
-      res.end(csst(location.query.id, Date.now().toString()));
+      res.end(csst(location.query.id, '时间戳：' + Date.now().toString()));
       break;
     default:
       res.writeHead(404);

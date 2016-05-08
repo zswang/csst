@@ -18,28 +18,34 @@
 </body>
 <script>
 (function() {
+  var liveScript = document.querySelector('script[async]');
+  var host = 'localhost';
+  if (liveScript) {
+    host = liveScript.src.match(/\d+(\.\d+){3}/)[0];
+    console.log(host);
+  }
+
   var count = 0;
-  var items = [{
-    id: count++,
-    timestamp: 'null'
-  }];
+  var items = [];
   new Vue({
     el: 'ul',
     data: {
       items: items
     }
   });
-  document.querySelector('button').addEventListener('click', function() {
-    csst('http://localhost:2016/timestamp.css', function(err, text) {
+  function goto() {
+    csst('http://' + host + ':2016/timestamp.css', function(err, text) {
       if (items.length > 10) {
         items.shift();
       }
       items.push({
         id: count++,
-        timestamp: text
+        timestamp: text || err
       });
     });
-  });
+  }
+  goto();
+  document.querySelector('button').addEventListener('click', goto);
 })();
 </script>
 </html>

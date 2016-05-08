@@ -6,8 +6,8 @@
    * CSS Text Transformation
    * @author
    *   zswang (http://weibo.com/zswang)
-   * @version 0.0.2
-   * @date 2016-05-06
+   * @version 0.0.3
+   * @date 2016-05-08
    */
   var count = 0;
   /**
@@ -56,9 +56,16 @@
     }
     function handler() {
       if (fn) {
-        var content = getComputedStyle(span, false).content;
+        var computedStyle = getComputedStyle(span, false);
+        var content = computedStyle.content;
         // 移除两边引号
-        content = content.replace(/^("|')([^]*)\1$/, "$2");
+        content = content.replace(/^("|')([^]*)\1$/, '$2');
+        try {
+          content = JSON.parse('"' + content + '"');
+        } catch(ex) {
+          fn(ex);
+          return;
+        }
         fn(null, content);
       }
       cleanup();
