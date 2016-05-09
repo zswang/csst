@@ -3,9 +3,6 @@
   "version": "0.1.1",
   "description": "CSS Text Transformation",
   "main": "csst.js",
-  "bin": {
-    "csst": "cli.js"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/zswang/csst.git"

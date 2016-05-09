@@ -23,6 +23,12 @@ CSST (CSS Text Transformation)
 
 > 考虑是 CSS3 场景，取巧用动画开始 (`animationstart`) 这个事件来捕获。
 
+* 怎么传送特殊字符（"、'、\、\n、\r、\t）？
+
+> Chrome、Safari 对 `content` 样式属性字符解析并不一致
+
+> 为避免未知解析规则影响，统一使用 base64 编码
+
 ### 服务器应答的内容
 
 ```js
@@ -52,6 +58,20 @@ function csst(id, text) {
 ## 与 JSONP 安全性比较
 
 ![image](https://cloud.githubusercontent.com/assets/536587/15090764/fcfee300-1465-11e6-9209-20d5ddd9b332.png)
+
+## 开发
+
+### 本机调试
+
+```bash
+$ npm run debug
+```
+
+### 构建
+
+```bash
+$ npm run dist
+```
 
 ## 问题
 

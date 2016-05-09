@@ -58,6 +58,9 @@
       if (fn) {
         var computedStyle = getComputedStyle(span, false);
         var content = computedStyle.content;
+        /*<remove trigger="release">*/
+        console.log('content: %s', content);
+        /*</remove>*/
         var match = content.match(/[\w+=\/]+/);
         // base64 解码
         if (match) {
