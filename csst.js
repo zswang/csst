@@ -1,4 +1,4 @@
-(function(exportName) {
+(function (exportName) {
   var exports = exports || {};
   /**
    * @file csst
@@ -6,8 +6,8 @@
    * CSS Text Transformation
    * @author
    *   zswang (http://weibo.com/zswang)
-   * @version 0.0.3
-   * @date 2016-05-08
+   * @version 0.1.1
+   * @date 2016-05-09
    */
   var count = 0;
   /**
@@ -32,7 +32,7 @@
     var timeout = typeof opts.timeout !== 'undefined' ? timeout : null;
     var timer;
     if (timeout) {
-      timer = setTimeout(function() {
+      timer = setTimeout(function () {
         cleanup();
         if (fn) {
           fn(new Error('Timeout'));
@@ -58,13 +58,16 @@
       if (fn) {
         var computedStyle = getComputedStyle(span, false);
         var content = computedStyle.content;
-        // 移除两边引号
-        content = content.replace(/^("|')([^]*)\1$/, '$2');
-        try {
-          content = JSON.parse('"' + content + '"');
-        } catch(ex) {
-          fn(ex);
-          return;
+        var match = content.match(/[\w+=\/]+/);
+        // base64 解码
+        if (match) {
+          try {
+            content = decodeURIComponent(escape(atob(match[0])));
+          }
+          catch (ex) {
+            fn(ex);
+            return;
+          }
         }
         fn(null, content);
       }
@@ -91,13 +94,15 @@
   var exports = csst;
   if (typeof define === 'function') {
     if (define.amd) {
-      define(function() {
+      define(function () {
         return exports;
       });
     }
-  } else if (typeof module !== 'undefined' && module.exports) {
+  }
+  else if (typeof module !== 'undefined' && module.exports) {
     module.exports = exports;
-  } else {
+  }
+  else {
     window[exportName] = exports;
   }
 })('csst');

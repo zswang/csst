@@ -11,6 +11,7 @@ function csst(id, text) {
   if (typeof text !== 'string') {
     text = JSON.stringify(text);
   }
+  text = new Buffer(text, 'utf-8').toString('base64')
   return `
   @keyframes ${id} {
     from {}
@@ -25,7 +26,7 @@ function csst(id, text) {
     }
   }
   #${id} {
-    content: ${JSON.stringify(text)};
+    content: "${text}";
     animation: ${id} 2s;
     -webkit-animation: ${id} 2s;
   }`;
@@ -51,7 +52,10 @@ http.createServer(function(req, res) {
       res.writeHead(200, {
         'Content-Type': 'text/css'
       });
-      res.end(csst(location.query.id, '时间戳：' + Date.now().toString()));
+      res.end(csst(location.query.id, {
+        title: '时间戳\\u3031',
+        value: Date.now().toString()
+      }));
       break;
     default:
       res.writeHead(404);

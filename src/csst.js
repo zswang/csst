@@ -1,4 +1,4 @@
-(function(exportName) {
+(function (exportName) {
   /*<remove>*/
   'use strict';
   /*</remove>*/
@@ -52,7 +52,7 @@
     var timer;
 
     if (timeout) {
-      timer = setTimeout(function() {
+      timer = setTimeout(function () {
         cleanup();
         if (fn) {
           fn(new Error('Timeout'));
@@ -85,13 +85,16 @@
         console.log('content: %s', content);
         /*</remove>*/
 
-        // 移除两边引号
-        content = content.replace(/^("|')([^]*)\1$/, '$2');
-        try {
-          content = JSON.parse('"' + content + '"');
-        } catch(ex) {
-          fn(ex);
-          return;
+        var match = content.match(/[\w+=\/]+/);
+        // base64 解码
+        if (match) {
+          try {
+            content = decodeURIComponent(escape(atob(match[0])));
+          }
+          catch (ex) {
+            fn(ex);
+            return;
+          }
         }
         fn(null, content);
       }
@@ -126,13 +129,15 @@
 
   if (typeof define === 'function') {
     if (define.amd) {
-      define(function() {
+      define(function () {
         return exports;
       });
     }
-  } else if (typeof module !== 'undefined' && module.exports) {
+  }
+  else if (typeof module !== 'undefined' && module.exports) {
     module.exports = exports;
-  } else {
+  }
+  else {
     window[exportName] = exports;
   }
 
