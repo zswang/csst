@@ -1,0 +1,32 @@
+{
+  "name": "csst",
+  "version": "0.1.1",
+  "homepage": "https://github.com/zswang/csst",
+  "authors": [
+    {
+      "name": "zswang",
+      "url": "http://weibo.com/zswang"
+    }
+  ],
+  "description": "CSS Text Transformation",
+  "main": "csst.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "CSS",
+    "Transformation",
+    "CSST"
+  ],
+  "license": "MIT",
+  "devDependencies": {},
+  "ignore": [
+    "src",
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/components",
+    "test",
+    "tests"
+  ]
+}
