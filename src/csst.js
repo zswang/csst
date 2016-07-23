@@ -3,8 +3,6 @@
   'use strict';
   /*</remove>*/
 
-  var exports = exports || {};
-
   /*<jdists encoding="ejs" data="../package.json">*/
   /**
    * @file <%- name %>
@@ -33,6 +31,28 @@
    * @param {Object|Function} opts/fn 配置项
    * @param {Function} fn 回调函数
    * @see https://github.com/webmodules/jsonp
+   * @example csst():base
+    ```js
+    csst('http://localhost:2016/text.css?text=hello', function(err, text) {
+      console.log(err);
+      // > null
+
+      console.log(text);
+      // > hello
+      // * done
+    });
+    ```
+   * @example csst():base2
+    ```js
+    csst('http://localhost:2016/text.css?text=world', function(err, text) {
+      console.log(err);
+      // > null
+
+      console.log(text);
+      // > world
+      // * done
+    });
+    ```
    */
   function csst(url, opts, fn) {
     if ('function' == typeof opts) {
@@ -127,6 +147,7 @@
 
   var exports = csst;
 
+  /* istanbul ignore next */
   if (typeof define === 'function') {
     if (define.amd) {
       define(function () {

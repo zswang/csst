@@ -10,6 +10,15 @@ var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var connect = require('gulp-connect');
 var open = require('gulp-open');
+var examplejs = require('gulp-examplejs');
+
+gulp.task('example', function() {
+  return gulp.src('src/**/*.js')
+    .pipe(examplejs({
+      header: 'var csst = require("../");require("./lib/dom");'
+    }))
+    .pipe(gulp.dest('test'));
+});
 
 gulp.task('build', function() {
   return gulp.src(['src/csst.js'])

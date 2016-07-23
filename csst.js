@@ -1,13 +1,12 @@
 (function (exportName) {
-  var exports = exports || {};
   /**
    * @file csst
    *
    * CSS Text Transformation
    * @author
    *   zswang (http://weibo.com/zswang)
-   * @version 0.1.1
-   * @date 2016-05-09
+   * @version 0.1.8
+   * @date 2016-07-23
    */
   var count = 0;
   /**
@@ -17,6 +16,26 @@
    * @param {Object|Function} opts/fn 配置项
    * @param {Function} fn 回调函数
    * @see https://github.com/webmodules/jsonp
+   * @example csst():base
+    ```js
+    csst('http://localhost:2016/text.css?text=hello', function(err, text) {
+      console.log(err);
+      // > null
+      console.log(text);
+      // > hello
+      // * done
+    });
+    ```
+   * @example csst():base2
+    ```js
+    csst('http://localhost:2016/text.css?text=world', function(err, text) {
+      console.log(err);
+      // > null
+      console.log(text);
+      // > world
+      // * done
+    });
+    ```
    */
   function csst(url, opts, fn) {
     if ('function' == typeof opts) {
@@ -92,6 +111,7 @@
     return cleanup;
   }
   var exports = csst;
+  /* istanbul ignore next */
   if (typeof define === 'function') {
     if (define.amd) {
       define(function () {

@@ -1,6 +1,6 @@
 {
   "name": "csst",
-  "version": "0.1.1",
+  "version": "0.1.8",
   "description": "CSS Text Transformation",
   "main": "csst.js",
   "repository": {
@@ -28,13 +28,20 @@
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^1.5.3",
     "gulp-watch": "^4.3.5",
-    "gulp-connect": "^4.0.0"
+    "gulp-connect": "^4.0.0",
+    "gulp-examplejs": "^0.0.9",
+    "mocha": "^2.0.1",
+    "istanbul": "^0.3.17",
+    "should": "^4.1.0"
   },
   "dependencies": {},
   "scripts": {
     "_update_version": "node version.js",
-    "dist": "npm run _update_version && gulp",
-    "debug": "gulp debug"
+    "example": "gulp example",
+    "dist": "npm run example && npm run _update_version && gulp && npm run test",
+    "debug": "gulp debug",
+    "mocha": "mocha",
+    "test": "istanbul cover --hook-run-in-context node_modules/mocha/bin/_mocha -- -R spec"
   },
   "files": [
     "csst.js",
