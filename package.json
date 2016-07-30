@@ -32,13 +32,15 @@
     "gulp-examplejs": "^0.0.9",
     "mocha": "^2.0.1",
     "istanbul": "^0.3.17",
-    "should": "^4.1.0"
+    "should": "^4.1.0",
+    "jshint": "^2.5.8"
   },
   "dependencies": {},
   "scripts": {
     "_update_version": "node version.js",
     "example": "gulp example",
     "dist": "npm run example && npm run _update_version && gulp && npm run test",
+    "lint": "jshint src/*.js",
     "debug": "gulp debug",
     "mocha": "mocha",
     "test": "istanbul cover --hook-run-in-context node_modules/mocha/bin/_mocha -- -R spec"
