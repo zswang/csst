@@ -1,6 +1,8 @@
 CSST (CSS Text Transformation)
 ----------
 
+# [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coverage-image]][coverage-url]
+
 ## 背景
 
 ### 什么是 CSST？
@@ -85,3 +87,14 @@ $ npm run dist
 
 * [link element onload](http://stackoverflow.com/questions/2635814/javascript-capturing-load-event-on-link)
 * [javascript: capturing load event on LINK](http://stackoverflow.com/questions/2635814/javascript-capturing-load-event-on-link)
+
+## License
+
+MIT © [zswang](http://weibo.com/zswang)
+
+[npm-url]: https://npmjs.org/package/csst
+[npm-image]: https://badge.fury.io/js/csst.svg
+[travis-url]: https://travis-ci.org/zswang/csst
+[travis-image]: https://travis-ci.org/zswang/csst.svg?branch=master
+[coverage-url]: https://coveralls.io/github/zswang/csst?branch=master
+[coverage-image]: https://coveralls.io/repos/zswang/csst/badge.svg?branch=master&service=github
