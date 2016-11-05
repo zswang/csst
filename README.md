@@ -50,7 +50,7 @@ function csst(id, text) {
     }
   }
   #${id} {
-    content: ${JSON.stringify(text)};
+    content: ${new Buffer(text, 'utf-8').toString('base64')};
     animation: ${id} 2s;
     -webkit-animation: ${id} 2s;
   }`;
